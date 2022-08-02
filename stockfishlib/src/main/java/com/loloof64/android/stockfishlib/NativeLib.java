@@ -6,11 +6,11 @@ class NativeLib {
             System.loadLibrary("stockfishlib");
         }
 
-        public native String readStdOut();
+        public static native String readStdOut();
 
-        public native boolean writeStdIn(String command);
+        public static native boolean writeStdIn(String command);
 
-        public native void init();
+        public static native void init();
 
-        public native void main();
+        public static native void main();
 }

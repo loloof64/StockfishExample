@@ -80,7 +80,7 @@ using namespace Stockfish;
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_readStdOut(JNIEnv *env, jobject thiz) {
+Java_com_loloof64_android_stockfishlib_NativeLib_readStdOut(JNIEnv *env, jclass clazz) {
     char *output = stockfish_stdout_read();
     // An error occured
     if (output == nullptr) {
@@ -91,7 +91,7 @@ Java_com_loloof64_android_stockfishlib_NativeLib_readStdOut(JNIEnv *env, jobject
 }
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_writeStdIn(JNIEnv *env, jobject thiz,
+Java_com_loloof64_android_stockfishlib_NativeLib_writeStdIn(JNIEnv *env, jclass clazz,
                                                             jstring command) {
     ssize_t result;
 
@@ -109,11 +109,13 @@ Java_com_loloof64_android_stockfishlib_NativeLib_writeStdIn(JNIEnv *env, jobject
 }
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_init(JNIEnv *env, jobject thiz) {
+Java_com_loloof64_android_stockfishlib_NativeLib_init(JNIEnv *env, jclass clazz) {
     stockfish_init();
 }
+
+
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_main(JNIEnv *env, jobject thiz) {
+Java_com_loloof64_android_stockfishlib_NativeLib_main(JNIEnv *env, jclass clazz) {
     stockfish_main();
 }
