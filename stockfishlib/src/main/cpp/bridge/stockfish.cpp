@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <cstdio>
 #include <unistd.h>
 #include <jni.h>
 
@@ -79,33 +79,22 @@ char *stockfish_stdout_read()
 using namespace Stockfish;
 
 extern "C"
-JNIEXPORT void JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_init(JNIEnv * /*env*/, jobject /*thisz*/) {
-    stockfish_init();
-}
-
-
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_main(JNIEnv * /*env*/, jobject /*thisz*/) {
-    stockfish_main();
-}
-
-extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_loloof64_android_stockfishlib_NativeLib_readStdOut(JNIEnv * env, jobject /*thisz*/) {
+Java_com_loloof64_android_stockfishlib_NativeLib_00024Companion_readStdOut(JNIEnv *env,
+                                                                           jobject thiz) {
     char *output = stockfish_stdout_read();
     // An error occured
-    if (output == NULL) {
-        return NULL;
+    if (output == nullptr) {
+        return nullptr;
     }
 
     return env->NewStringUTF(buffer);
 }
-
 extern "C"
 JNIEXPORT jboolean JNICALL
-        Java_com_loloof64_android_stockfishlib_NativeLib_writeStdIn(JNIEnv * env, jobject /*thisz*/, jstring command) {
+Java_com_loloof64_android_stockfishlib_NativeLib_00024Companion_writeStdIn(JNIEnv *env,
+                                                                           jobject thiz,
+                                                                           jstring command) {
     ssize_t result;
 
     jboolean isCopy;
@@ -119,4 +108,14 @@ JNIEXPORT jboolean JNICALL
     }
 
     return JNI_TRUE;
+}
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_loloof64_android_stockfishlib_NativeLib_00024Companion_init(JNIEnv *env, jobject thiz) {
+    stockfish_init();
+}
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_loloof64_android_stockfishlib_NativeLib_00024Companion_main(JNIEnv *env, jobject thiz) {
+    stockfish_main();
 }

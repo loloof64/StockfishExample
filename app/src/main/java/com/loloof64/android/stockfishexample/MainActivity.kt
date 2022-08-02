@@ -11,18 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.loloof64.android.stockfishexample.ui.theme.StockfishExampleTheme
-import com.loloof64.android.stockfishlib.NativeLib
 
 class MainActivity : ComponentActivity() {
-    lateinit var stockfish: NativeLib
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (savedInstanceState == null) {
-            stockfish = NativeLib()
-            stockfish.init()
-        }
 
         setContent {
             StockfishExampleTheme {
